@@ -9,6 +9,7 @@ function NewTransaction() {
     id: nanoid(),
   });
   const { dispatch } = useContext(transactionsContext);
+
   function handleSubmit(e) {
     e.preventDefault();
     dispatch({ type: "NEW_TRANSANCTION", payload: transaction });
@@ -33,10 +34,14 @@ function NewTransaction() {
         placeholder="New tablet ..."
       />
       <label htmlFor="amount">Amount</label>
+      <p>(negative - expense, positive - income)</p>
       <input
         value={transaction.amount}
         onChange={(e) =>
-          setTransaction((prev) => ({ ...prev, amount: e.target.value }))
+          setTransaction((prev) => ({
+            ...prev,
+            amount: e.target.value,
+          }))
         }
         type="number"
         name="amount"
