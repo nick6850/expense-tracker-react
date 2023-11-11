@@ -31,7 +31,8 @@ function NewTransaction() {
         }
         type="text"
         name="name"
-        placeholder="New tablet ..."
+        placeholder="New tablet"
+        required
       />
       <label htmlFor="amount">Amount</label>
       <p style={{ fontSize: "10px" }}>
@@ -45,11 +46,14 @@ function NewTransaction() {
             amount: e.target.value,
           }))
         }
-        type="number"
+        type="text"
         name="amount"
         placeholder="200"
+        pattern="[0-9]*\.?[0-9]*"
+        inputMode="numeric"
+        required
       />
-      <button>Add transaction</button>
+      <button className="addTransactionBtn">Add transaction</button>
     </form>
   );
 }

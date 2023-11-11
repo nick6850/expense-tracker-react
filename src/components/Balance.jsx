@@ -15,7 +15,7 @@ function Balance() {
           : transaction.amount[0] === "-"
       );
       return values.reduce(
-        (total, transaction) => total + parseInt(transaction.amount),
+        (total, transaction) => total + parseFloat(transaction.amount),
         0
       );
     }
@@ -33,16 +33,16 @@ function Balance() {
     <div className="balance">
       <div className="total_balance">
         <h5>Your balance</h5>
-        <h4>${balanceTotal}</h4>
+        <h4>${balanceTotal.toFixed(2) || "0.00"}</h4>
       </div>
       <div className="income_expense">
         <div className="total_income">
           <p>Income</p>
-          <p style={{ color: "green" }}>{incomeTotal}</p>
+          <p style={{ color: "green" }}>{incomeTotal.toFixed(2)}</p>
         </div>
         <div className="total_expense">
           <p>Expense</p>
-          <p style={{ color: "#BE4D48" }}>{expenseTotal}</p>
+          <p style={{ color: "#BE4D48" }}>{expenseTotal.toFixed(2)}</p>
         </div>
       </div>
     </div>
