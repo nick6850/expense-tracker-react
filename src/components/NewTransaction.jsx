@@ -49,7 +49,7 @@ function NewTransaction() {
         type="text"
         name="amount"
         placeholder="200"
-        pattern="[0-9]*\.?[0-9]*"
+        pattern="-?[0-9]*\.?[0-9]*"
         inputMode="numeric"
         required
       />
