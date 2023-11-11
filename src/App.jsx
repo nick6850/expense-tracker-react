@@ -6,7 +6,7 @@ import { ContextProvider } from "./ContextProvider";
 function App() {
   return (
     <main>
-      <h1>Expense Tracker</h1>
+      <h3>Expense Tracker</h3>
       <ContextProvider>
         <Balance />
         <History />

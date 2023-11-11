@@ -22,7 +22,7 @@ function NewTransaction() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h3>Add new transaction</h3>
+      <h4>Add new transaction</h4>
       <label htmlFor="name">Name</label>
       <input
         value={transaction.name}
@@ -34,7 +34,9 @@ function NewTransaction() {
         placeholder="New tablet ..."
       />
       <label htmlFor="amount">Amount</label>
-      <p>(negative - expense, positive - income)</p>
+      <p style={{ fontSize: "10px" }}>
+        (negative - expense, positive - income)
+      </p>
       <input
         value={transaction.amount}
         onChange={(e) =>

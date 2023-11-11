@@ -6,27 +6,32 @@ function History() {
   const { state, dispatch } = useContext(transactionsContext);
 
   return (
-    <div className="History">
-      <h3>History</h3>
-      {state.map((transaction) => (
-        <div key={transaction.id}>
-          <p>{transaction.name}</p>
-          <p className={amount[0] === "-" ? "income" : "expense"}>
-            {transaction.amount}
-          </p>
-          <button
-            onClick={() =>
-              dispatch({
-                type: "DELETE_TRANSACTION",
-                payload: transaction.id,
-              })
-            }
+    state.length > 0 && (
+      <div className="history">
+        <h5>History</h5>
+        {state.map((transaction) => (
+          <div
+            className={`transaction ${
+              transaction.amount[0] === "-" ? "expense" : "income"
+            }`}
+            key={transaction.id}
           >
-            X
-          </button>
-        </div>
-      ))}
-    </div>
+            <p className="transaction_name">{transaction.name}</p>
+            <p>{transaction.amount}</p>
+            <button
+              onClick={() =>
+                dispatch({
+                  type: "DELETE_TRANSACTION",
+                  payload: transaction.id,
+                })
+              }
+            >
+              X
+            </button>
+          </div>
+        ))}
+      </div>
+    )
   );
 }
 

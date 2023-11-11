@@ -11,8 +11,8 @@ function Balance() {
     function calculateTotal(type) {
       const values = state.filter((transaction) =>
         type === "income"
-          ? transaction.amount[0] === "-"
-          : transaction.amount[0] != "-"
+          ? transaction.amount[0] != "-"
+          : transaction.amount[0] === "-"
       );
       return values.reduce(
         (total, transaction) => total + parseInt(transaction.amount),
@@ -27,16 +27,23 @@ function Balance() {
     setIncomeTotal(newIncomeTotal);
     setExpenseTotal(newExpenseTotal);
     setBalanceTotal(newBalanceTotal);
-  }, [state]);
+  }, [state, incomeTotal, expenseTotal]);
 
   return (
     <div className="balance">
       <div className="total_balance">
-        <h4>Your balance ${balanceTotal}</h4>
+        <h5>Your balance</h5>
+        <h4>${balanceTotal}</h4>
       </div>
       <div className="income_expense">
-        <p>Income {incomeTotal}</p>
-        <p>Expense {expenseTotal}</p>
+        <div className="total_income">
+          <p>Income</p>
+          <p style={{ color: "green" }}>{incomeTotal}</p>
+        </div>
+        <div className="total_expense">
+          <p>Expense</p>
+          <p style={{ color: "#BE4D48" }}>{expenseTotal}</p>
+        </div>
       </div>
     </div>
   );
